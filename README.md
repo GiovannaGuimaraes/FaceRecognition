@@ -1,2 +1,2 @@
-# FaceRecognition
-Face recognition with python Dlib
+# FacialRecognition
+Facial recognition with python Dlib
