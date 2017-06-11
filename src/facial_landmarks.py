@@ -3,8 +3,8 @@ from imutils import face_utils
 import numpy as np
 import argparse
 import imutils
-import cv2
 import dlib
+import cv2
  
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -17,10 +17,10 @@ args = vars(ap.parse_args())
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(shape_predictor_68_face_landmarks.dat/data)
+predictor = dlib.shape_predictor(args.get("shape_predictor"))
 
 # load the input image, resize it, and convert it to grayscale
-image = cv2.imread(Anzu.jpg)
+image = cv2.imread(args.get("image"))
 image = imutils.resize(image, width=500)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
  
