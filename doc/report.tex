@@ -213,6 +213,20 @@
     For red eyes removel, we used the Haar Cascade Classifier included in OpenCV to locate the eyes. Having the eyes, the program separates the red channel from the green and blue, apply a threshold in the red channel for a minimum red intensity that the user define as possible red eye, apply a closing operation in the image to remove noise and small ``holes'' and finally replace the red pixels with the mean of the green and blue channels. This way, the color seems to blend better with the eye iris.
     The green and blue channels are used as masks when replacing the pixels, to guarantee a smooth eye.
 
+    \begin{figure}[!hb]
+        \centering
+        \includegraphics[scale=0.5]{redeye5.jpg}
+        \caption{Original photo}
+        \label{Redeye}
+    \end{figure}
+
+    \begin{figure}[!hb]
+        \centering
+        \includegraphics[scale=0.5]{redeye-removed.jpg}
+        \caption{After removing redeye (threshold = 80)}
+        \label{Redeye removed}
+    \end{figure}
+
 \section{References}
 
 \begin{verbatim}
