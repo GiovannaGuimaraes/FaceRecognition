@@ -1,3 +1,4 @@
+import numpy as np
 from PIL import Image, ImageOps
 from PIL import ImageFilter
 import sys
@@ -152,10 +153,10 @@ def grid_to_mesh(src_grid, dst_grid):
             mesh.append([dst_rect, src_quad])
     return mesh
 
-im = Image.open('./old_driver/data/train/c0/img_292.jpg')
+#im = Image.open('./old_driver/data/train/c0/img_292.jpg')
+im = image
 dst_grid = griddify(shape_to_rect(im.size), 4, 4)
 src_grid = distort_grid(dst_grid, 50)
 mesh = grid_to_mesh(src_grid, dst_grid)
 im = im.transform(im.size, Image.MESH, mesh)
 im.show()	
-
