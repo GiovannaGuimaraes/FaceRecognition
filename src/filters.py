@@ -21,6 +21,7 @@ def applyFilter(image, operation):
 	return image.filter(options[operation])
 
 image = Image.open(str(sys.argv[1])).convert("RGB") 
+
 #filtered = applyFilter(image, str(sys.argv[2]))
 #filtered.show()
 
@@ -157,3 +158,4 @@ src_grid = distort_grid(dst_grid, 50)
 mesh = grid_to_mesh(src_grid, dst_grid)
 im = im.transform(im.size, Image.MESH, mesh)
 im.show()	
+
