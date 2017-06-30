@@ -1,2 +1,3 @@
 databases/
 *pycache*
+src/__pycache__/
