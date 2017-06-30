@@ -40,11 +40,13 @@ options2 = ['autocontrast',
 
 # Menu handlers
 def printMenu():
-	print("\n\t1 - Load image")
+	print("\nOptions:")
+	print("\t1 - Load image")
 	print("\t2 - Filter image")
 	print("\t3 - Distort image")
 	print("\t4 - Remove red eyes")
 	print("\t5 - Reset")
+	print("\t6 - Save")
 	print("\t0 - Exit")
 
 def printFilterMenu():
@@ -53,7 +55,7 @@ def printFilterMenu():
 def filterMenu(img):
 
 	printFilterMenu()
-	operation = input()
+	operation = input(">>> ")
 
 	if operation in options:
 
@@ -79,9 +81,9 @@ def filterMenu(img):
 def distortMenu(img):
 	
 	try:
-		xGridResolution = int(input("x Grid Resolution: "))
-		yGridResolution = int(input("y Grid Resolution: "))
-		distortion = int(input("Max Distortion: "))
+		xGridResolution = int(input(">>> x Grid Resolution: "))
+		yGridResolution = int(input(">>> y Grid Resolution: "))
+		distortion = int(input(">>> Max Distortion: "))
 
 	except Exception as e:
 		print("\nInvalid parameters.")
@@ -110,7 +112,7 @@ def updateImg(processingImg):
 ########
 
 # Select initial image
-# selectedImg = Image.open(input("Image file: ")).convert("RGB")
+# selectedImg = Image.open(input(">>> Image file: ")).convert("RGB")
 selectedImg = Image.open("databases/tests/redeye-test.jpg").convert("RGB")
 processingImg = selectedImg.copy()
 
@@ -126,7 +128,7 @@ while True:
 
 	# Transform op in invalid command
 	try:
-		op = int(input())
+		op = int(input(">>> "))
 	except Exception as e:
 		op = -1
 
@@ -140,7 +142,7 @@ while True:
 
 		try:
 
-			selectedImg = Image.open(input("Image file: ")).convert("RGB")
+			selectedImg = Image.open(input(">>> Image file: ")).convert("RGB")
 			processingImg = selectedImg.copy()
 			cv2.destroyAllWindows()
 			
@@ -179,7 +181,7 @@ while True:
 
 	elif op == 4:
 		try:
-			tmp = correctRedEye(pil2cv(processingImg), int(input("Threshold: ")))
+			tmp = correctRedEye(pil2cv(processingImg), int(input(">>> Threshold: ")))
 			
 			# Preserve processing image in case something bad happens
 			processingImg = cv2pil(tmp)
@@ -192,6 +194,14 @@ while True:
 	elif op == 5:
 		processingImg = selectedImg
 		updateImg(pil2cv(processingImg))
+
+	elif op == 6:
+		path = input(">>> Filename: ")
+		img = pil2cv(processingImg)
+		try:
+			cv2.imwrite(path, img)
+		except Exception as e:
+			print("Directory does not exists or is inaccessible")
 
 	else:
 		print("\nUnknown operation.")
