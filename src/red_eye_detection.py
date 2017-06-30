@@ -25,8 +25,6 @@ def correctRedEye(img, threshold=80):
 	outImage = img.copy()
 	eyeRects = findEyes(img)
 
-	print(eyeRects)
-
 	# Iterate over all found eyes
 	for x, y, w, h in eyeRects:
 
