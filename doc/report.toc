@@ -2,4 +2,8 @@
 \contentsline {section}{\numberline {2}Input Description}{4}{section.2}
 \contentsline {section}{\numberline {3}Steps Description}{5}{section.3}
 \contentsline {section}{\numberline {4}First Results}{7}{section.4}
-\contentsline {section}{\numberline {5}References}{8}{section.5}
+\contentsline {section}{\numberline {5}Final Results}{8}{section.5}
+\contentsline {subsection}{\numberline {5.1}Filters}{8}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Distortion}{9}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Red Eyes}{10}{subsection.5.3}
+\contentsline {section}{\numberline {6}References}{10}{section.6}

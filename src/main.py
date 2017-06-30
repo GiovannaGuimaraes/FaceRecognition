@@ -112,8 +112,8 @@ def updateImg(processingImg):
 ########
 
 # Select initial image
-# selectedImg = Image.open(input(">>> Image file: ")).convert("RGB")
-selectedImg = Image.open("databases/tests/redeye-test.jpg").convert("RGB")
+selectedImg = Image.open(input(">>> Image file: ")).convert("RGB")
+# selectedImg = Image.open("databases/tests/redeye-test.jpg").convert("RGB")
 processingImg = selectedImg.copy()
 
 # Convert from pillow to opencv format and display images
