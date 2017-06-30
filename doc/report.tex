@@ -154,21 +154,21 @@
     \begin{figure}[!hb]
         \centering
         \includegraphics[scale=0.5]{anzusc.png}
-        \caption{Exemple of a facial recognition performed in a colorful image}
+        \caption{Example of a facial recognition performed in a colorful image}
         \label{Anzu}
     \end{figure}
 
     \begin{figure}[!hb]
         \centering
         \includegraphics[scale=0.5]{multiple-faces.png}
-        \caption{Exemple of a multiple facial recognition performed in a grayscale image}
+        \caption{Example of a multiple facial recognition performed in a grayscale image}
         \label{Gray}
     \end{figure}
     
     \begin{figure}[!ht]
         \centering
         \includegraphics[scale=0.5]{AnzuscWrong.png}
-        \caption{Exemple of a failed recognition that we expect to fix with the 194 point model}
+        \caption{Example of a failed recognition that we expect to fix with the 194 point model}
         \label{Anzu2}
     \end{figure}
     
@@ -181,7 +181,37 @@
 \section{Final Results}
     As we didn't manage to construct the database and train the new 194 landmarks model in time, we decided to use cascade classifiers included with OpenCV to find some characteristics, like eyes. This is a lot more limited than what we previously wanted, however it sufficient for testing a lot of the features we envisioned.
 
-    
+\subsection{Filters}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.5]{Anzu-test.jpg}
+        \caption{Anzu3.jpg after applying Sharpen -> Detail -> Autocontrast -> Equalize filters}
+        \label{Anzu-test}
+    \end{figure}
+
+\subsection{Distortion}
+    For applying distortion, first we transform the image to a grid and then to a mesh-like structure. This facilitates when moving and interpolating points in images. The user may define the grid resolution in X and Y axis separately, and also define the max distortion value, since it will be randomly applied in the image.
+
+    It is possible to obtain interesting effets by tuning the distortion parameters, like a glass or watery effect as seen in~\ref{Anzu-glass} and~\ref{Anzu-watery}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.5]{Anzu-glass.jpg}
+        \caption{Anzu3.jpg with distortion (x = 200, y = 200, distortion = 50)}
+        \label{Anzu-glass}
+    \end{figure}
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.5]{Anzu-watery.jpg}
+        \caption{Anzu3.jpg with distortion (x = 65, y = 35, distortion = 15)}
+        \label{Anzu-watery}
+    \end{figure}
+
+\subsection{Red Eyes}
+    For red eyes removel, we used the Haar Cascade Classifier included in OpenCV to locate the eyes. Having the eyes, the program separates the red channel from the green and blue, apply a threshold in the red channel for a minimum red intensity that the user define as possible red eye, apply a closing operation in the image to remove noise and small ``holes'' and finally replace the red pixels with the mean of the green and blue channels. This way, the color seems to blend better with the eye iris.
+    The green and blue channels are used as masks when replacing the pixels, to guarantee a smooth eye.
 
 \section{References}
 
@@ -193,8 +223,7 @@
 \par 6 - OpenCV: ``http://opencv.org/'' \\
 \par 7 - Haar Cascades OpenCV: ``http://docs.opencv.org/trunk/d7/d8b/tutorial_py_face_detection.html'' \\
 
-
-\par 7 - Red eyes removal: ``https://pytech-solution.blogspot.com.br/2017/04/red-eye-correction-from-image-using.html'' \\ % FIXME: Mantem essa referencia?
+\par 8 - Red eyes removal: ``https://pytech-solution.blogspot.com.br/2017/04/red-eye-correction-from-image-using.html'' \\ % FIXME: Mantem essa referencia?
 \par 7 - : ``'' \\
 
 

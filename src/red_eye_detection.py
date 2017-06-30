@@ -25,6 +25,8 @@ def correctRedEye(img, threshold=80):
 	outImage = img.copy()
 	eyeRects = findEyes(img)
 
+	print(eyeRects)
+
 	# Iterate over all found eyes
 	for x, y, w, h in eyeRects:
 
@@ -79,7 +81,7 @@ def correctRedEye(img, threshold=80):
 		mean = cv2.cvtColor(mean, cv2.COLOR_GRAY2BGR)
 		mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
 		eye = cv2.bitwise_and(~mask, eyeImage) + mean
-		outImage[y:y+h , x:x+w] = eye
+		outImage[y:y+h, x:x+w] = eye
 
 	return outImage
 

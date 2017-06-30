@@ -188,8 +188,8 @@ while True:
 			updateImg(pil2cv(processingImg))
 
 		except Exception as e:
-			# print(e)
-			raise
+			print(e)
+			
 
 	elif op == 5:
 		processingImg = selectedImg
