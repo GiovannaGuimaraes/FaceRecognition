@@ -21,18 +21,15 @@ options = {'blur': ImageFilter.BLUR,
 		  'contour': ImageFilter.CONTOUR,
 		  'detail': ImageFilter.DETAIL,
 		  'edge_enhance': ImageFilter.EDGE_ENHANCE,
-		  'edge_enhance_more': ImageFilter.EDGE_ENHANCE_MORE,
 		  'emboss': ImageFilter.EMBOSS,
 		  'find_edges': ImageFilter.FIND_EDGES,
 		  'smooth': ImageFilter.SMOOTH,
-		  'smooth_more': ImageFilter.SMOOTH_MORE,
 		  'sharpen': ImageFilter.SHARPEN
 		  }
 options2 = ['autocontrast', 
 		   'equalize', 
 		   'flip', 
 		   'invert', 
-		   'grayscale',
 		   'mirror', 
 		   'posterize', 
 		   'solarize'
