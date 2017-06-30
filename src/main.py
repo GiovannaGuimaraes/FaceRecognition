@@ -1,16 +1,20 @@
 '''
-Main source file for Facial C
+Main source file for Facial Characteristics Extraction
 
-
+Lucas Alexandre Soares - 9293265
+Giovanna Oliveira Guimarães - 9293693
+Julia Diniz - 9364865
 '''
-from PIL import Image, ImageOps, ImageFilter
-import filters
-from filters import *
 
+import filters
 import numpy as np
 import cv2
 import sys
 import os
+
+from PIL import Image, ImageOps, ImageFilter
+from red_eye_detection import *
+from filters import *
 
 # Define possible filters in options dict
 options = {'blur': ImageFilter.BLUR,
@@ -39,7 +43,7 @@ def printMenu():
 	print("\n\t1 - Load image")
 	print("\t2 - Filter image")
 	print("\t3 - Distort image")
-	print("\t4 - Remove red eyes image")
+	print("\t4 - Remove red eyes")
 	print("\t5 - Reset")
 	print("\t0 - Exit")
 
@@ -107,7 +111,7 @@ def updateImg(processingImg):
 
 # Select initial image
 # selectedImg = Image.open(input("Image file: ")).convert("RGB")
-selectedImg = Image.open("databases/tests/Anzu3.jpg").convert("RGB")
+selectedImg = Image.open("databases/tests/redeye-test.jpg").convert("RGB")
 processingImg = selectedImg.copy()
 
 # Convert from pillow to opencv format and display images
@@ -174,7 +178,16 @@ while True:
 			print(e)
 
 	elif op == 4:
-		print("TODO")
+		try:
+			tmp = correctRedEye(pil2cv(processingImg), int(input("Threshold: ")))
+			
+			# Preserve processing image in case something bad happens
+			processingImg = cv2pil(tmp)
+			updateImg(pil2cv(processingImg))
+
+		except Exception as e:
+			# print(e)
+			raise
 
 	elif op == 5:
 		processingImg = selectedImg

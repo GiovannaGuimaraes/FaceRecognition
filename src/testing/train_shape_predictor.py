@@ -1,3 +1,7 @@
+''' 
+	THIS IS A TEST CODE PROVIDED BY DLIB FOR TRAINING THE SHAPE PREDICTOR MODEL 
+'''
+
 import os
 import sys
 import dlib

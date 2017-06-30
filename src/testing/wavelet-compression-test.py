@@ -1,3 +1,12 @@
+'''
+Wavelet compression source file for Facial Characteristics Extraction
+
+Lucas Alexandre Soares - 9293265
+Giovanna Oliveira Guimarães - 9293693
+Julia Diniz - 9364865
+'''
+
+
 import numpy as np
 import argparse
 import pywt
@@ -26,6 +35,7 @@ def w2d(img, mode="haar", level=None):
     coeffs_H[0] *= 0;  
 
     # reconstruction
+    # TODO: Check reconstruction resolution
     imArray_H = pywt.waverec2(coeffs_H, mode);
     imArray_H *= 255;
     imArray_H = np.uint8(imArray_H)

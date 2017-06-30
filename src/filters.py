@@ -1,7 +1,15 @@
+'''
+Filters source file for Facial Characteristics Extraction
+
+Lucas Alexandre Soares - 9293265
+Giovanna Oliveira Guimarães - 9293693
+Julia Diniz - 9364865
+'''
+
 import numpy as np
-from PIL import Image, ImageOps
-from PIL import ImageFilter
 import sys
+
+from PIL import Image, ImageOps, ImageFilter
 
 # Filters
 def applyFilter(image, operation):
